@@ -13,9 +13,13 @@ const Cart = () => {
   const cartItems = useSelector((store) => store.cart.cartItems)
 
   let cartItemsCount = 0
+  let totalAmount = 0
 
   for (const [key, value] of Object.entries(cartItems)) {
     cartItemsCount += value.length
+    for (let i = 0; i < value.length; i++) {
+      totalAmount += value[i].price
+    }
   }
 
   const handleRemoveItem = (product) => {
@@ -24,7 +28,6 @@ const Cart = () => {
   }
 
   const handleUpdateItem = (product, type) => {
-    console.log("update cart item", product, type)
     if (type === "increment") {
       if (cartItems[product.name]?.length >= product.quantity) {
         toast.error("Product went out of stock!")
@@ -106,6 +109,11 @@ const Cart = () => {
             )
           })}
         </div>
+      </div>
+      <hr className='mt-6' />
+      <div className='totals flex justify-center mt-2'>
+        <p className='font-bold mr-4 text-3xl'>Total:</p>
+        <p className='text-3xl'>{totalAmount}</p>
       </div>
     </div>
   )
