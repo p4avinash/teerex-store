@@ -1,6 +1,10 @@
 import React, { useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { addFilteredProductToStore } from "../utils/slices/appSlice"
+import {
+  addFilteredProductToStore,
+  toggleShowFilter,
+} from "../utils/slices/appSlice"
+import { BiFilterAlt } from "react-icons/bi"
 
 const Searchbox = () => {
   const dispatch = useDispatch()
@@ -27,8 +31,12 @@ const Searchbox = () => {
     dispatch(addFilteredProductToStore(filteredProducts))
   }
 
+  const handleShowFilters = () => {
+    dispatch(toggleShowFilter())
+  }
+
   return (
-    <div className='m-6'>
+    <div className='m-6 flex'>
       <input
         onChange={handleSearch}
         ref={searchRef}
@@ -41,6 +49,12 @@ const Searchbox = () => {
         className='bg-black text-white p-3 rounded-r-lg search-button-container'
       >
         Search
+      </button>
+      <button
+        onClick={handleShowFilters}
+        className='bg-black text-white p-4 rounded-lg ml-1 filter sm:hidden'
+      >
+        <BiFilterAlt />
       </button>
     </div>
   )

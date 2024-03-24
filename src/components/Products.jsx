@@ -63,7 +63,7 @@ const Products = () => {
       <div className=''>
         <Filter />
       </div>
-      <div className='flex flex-col items-center'>
+      <div className='flex w-full flex-col items-center'>
         <Searchbox />
         <ProductCardList />
       </div>

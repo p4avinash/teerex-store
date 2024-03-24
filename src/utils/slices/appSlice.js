@@ -13,6 +13,7 @@ const appSlice = createSlice({
       gender: [],
       type: [],
     },
+    showFilter: false,
   },
   reducers: {
     addProductToStore: (state, action) => {
@@ -36,6 +37,10 @@ const appSlice = createSlice({
       state.filteredProducts = state.uniqueProducts.filter(
         (item) => item.price <= Number(action.payload)
       )
+    },
+
+    toggleShowFilter: (state, action) => {
+      state.showFilter = !state.showFilter
     },
 
     addFiltersType: (state, action) => {
@@ -117,5 +122,6 @@ export const {
   addFiltersType,
   updatePriceFilter,
   updateFilteredCategories,
+  toggleShowFilter,
 } = appSlice.actions
 export default appSlice.reducer

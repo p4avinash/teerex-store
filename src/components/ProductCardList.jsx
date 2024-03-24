@@ -6,7 +6,7 @@ const ProductCardList = () => {
   const filteredProducts = useSelector((store) => store.app.filteredProducts)
 
   return (
-    <div className='flex gap-6 flex-wrap justify-center'>
+    <div className='flex gap-6 flex-wrap justify-center items-center'>
       {filteredProducts.map((product) => {
         return <ProductCard product={product} key={product.id} />
       })}

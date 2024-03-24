@@ -7,12 +7,18 @@ const Filter = () => {
 
   const filterCategories = useSelector((store) => store.app.filterCategories)
 
+  const showFilter = useSelector((store) => store.app.showFilter)
+
   const handleFilterChange = (e) => {
     dispatch(addFiltersType({ data: e.target.id, status: e.target.checked }))
   }
 
   return (
-    <div className='shadow-xl p-6 flex justify-center sm:flex-col gap-2 sm:gap-8 rounded-xl bg-gray-300 w-full sm:w-48'>
+    <div
+      className={`shadow-xl p-6 filter justify-center sm:flex sm:flex-col gap-2 sm:gap-8 rounded-xl bg-gray-300 w-full sm:w-48 ${
+        showFilter ? " flex" : "hidden"
+      } `}
+    >
       {/* color filter */}
       <div className='color-filter'>
         <h1 className='text-xl font-bold'>Color</h1>
