@@ -5,7 +5,6 @@ import {
   addItemToCart,
   removeSingleItemFromCart,
 } from "../utils/slices/cartSlice"
-import { CgMathMinus, CgMathPlus } from "react-icons/cg"
 import toast from "react-hot-toast"
 
 const Cart = () => {
@@ -85,7 +84,7 @@ const Cart = () => {
                     onClick={() => handleUpdateItem(product[0], "decrement")}
                     className='text-white px-3  flex justify-center items-center rounded-lg bg-cyan-700'
                   >
-                    <CgMathMinus />
+                    -
                   </button>
                   <p className='bg-white px-3 rounded-lg font-bold text-lg'>
                     {product.length}
@@ -94,7 +93,7 @@ const Cart = () => {
                     onClick={() => handleUpdateItem(product[0], "increment")}
                     className='text-white px-3 flex justify-center items-center rounded-lg bg-cyan-700'
                   >
-                    <CgMathPlus />
+                    +
                   </button>
                 </div>
                 <div>

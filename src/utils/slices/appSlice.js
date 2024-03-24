@@ -84,12 +84,11 @@ const appSlice = createSlice({
       }
 
       const filteredData = state.uniqueProducts.filter((item) => {
-        let filterObjKeys = Object.keys(state.filters)
         let isPresent = true
         for (const filterKey in state.filters) {
           if (Object.hasOwnProperty.call(state.filters, filterKey)) {
             const filters = state.filters[filterKey]
-            if (filterKey == "price") {
+            if (filterKey === "price") {
               if (!isPriceInRange(item.price, filters)) {
                 isPresent = false
                 break
