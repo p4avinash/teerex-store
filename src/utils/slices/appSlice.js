@@ -69,66 +69,44 @@ const appSlice = createSlice({
       }
 
       //filter products
+      function isPriceInRange(price, filters) {
+        let isValid = false
+        for (let i = 0; i < filters.length; i++) {
+          const minRange = filters[i].split("_")[0]
+          const maxRange = filters[i].split("_")[1]
 
-      // const filteredProducts = state.uniqueProducts.filter((item) => {
-      //   let filterObjKeys = Object.keys(state.filters)
-      //   let isPresent = true
+          if (price >= minRange && price <= maxRange) {
+            isValid = true
+            break
+          }
+        }
+        return isValid
+      }
 
-      //   for (let i = 0; i < filterObjKeys.length; i++) {
-      //     let filterKey = filterObjKeys[i]
-      //     if (
-      //       !state.filters[filterKey].includes(item[filterKey].toLowerCase())
-      //     ) {
-      //       isPresent = false
-      //       break
-      //     }
-      //   }
-
-      //   if (isPresent) {
-      //     return item
-      //   }
-      // })
-
-      // state.filteredProducts = filteredProducts
-
-      const filteredProducts = state.uniqueProducts.filter((item) => {
+      const filteredData = state.uniqueProducts.filter((item) => {
         let filterObjKeys = Object.keys(state.filters)
         let isPresent = true
-
-        for (let i = 0; i < filterObjKeys.length; i++) {
-          let filterKey = filterObjKeys[i]
-          if (filterKey !== "price") {
-            if (
-              !state.filters[filterKey].includes(item[filterKey].toLowerCase())
-            ) {
-              isPresent = false
-              break
-            }
-          } else {
-            const priceRangeArray = state.filters[filterKey]
-            for (let i = 0; i < priceRangeArray.length; i++) {
-              console.log(priceRangeArray[i])
-              const startRange = priceRangeArray[i].split("_")[0]
-              const endRange = priceRangeArray[i].split("_")[1]
-
-              if (
-                !(
-                  item.price >= Number(startRange) &&
-                  item.price <= Number(endRange)
-                )
-              ) {
+        for (const filterKey in state.filters) {
+          if (Object.hasOwnProperty.call(state.filters, filterKey)) {
+            const filters = state.filters[filterKey]
+            if (filterKey == "price") {
+              if (!isPriceInRange(item.price, filters)) {
                 isPresent = false
                 break
               }
+            } else if (!filters.includes(item[filterKey].toLowerCase())) {
+              isPresent = false
+              break
             }
           }
         }
+
         if (isPresent) {
           return item
         }
       })
 
-      state.filteredProducts = filteredProducts
+      state.filteredProducts = filteredData
     },
   },
 })

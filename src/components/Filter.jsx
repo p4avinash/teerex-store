@@ -25,7 +25,12 @@ const Filter = () => {
                 name='red-color-filter'
                 id={`${item}-color-filter`}
               />
-              <p className='font-bold capitalize'>{item}</p>
+              <label
+                htmlFor={`${item}-color-filter`}
+                className={`font-bold capitalize ${item}`}
+              >
+                {item}
+              </label>
             </div>
           )
         })}
@@ -43,7 +48,12 @@ const Filter = () => {
                 name='men-gender-filter'
                 id={`${item}-gender-filter`}
               />
-              <p className='font-bold capitalize'>{item}</p>
+              <label
+                htmlFor={`${item}-color-filter`}
+                className={`font-bold capitalize ${item}`}
+              >
+                {item}
+              </label>
             </div>
           )
         })}
@@ -59,7 +69,9 @@ const Filter = () => {
             name='price-filter'
             id='0_250-price-filter'
           />
-          <p className='font-bold'>0-250</p>
+          <label htmlFor='0_250-price-filter' className='0-250 font-bold'>
+            0-250
+          </label>
         </div>
         <div className='flex gap-2'>
           <input
@@ -68,7 +80,9 @@ const Filter = () => {
             name='price-filter'
             id='250_350-price-filter'
           />
-          <p className='font-bold'>250-350</p>
+          <label htmlFor='250_350-price-filter' className='250-350 font-bold'>
+            250-350
+          </label>
         </div>
         <div className='flex gap-2'>
           <input
@@ -77,7 +91,9 @@ const Filter = () => {
             name='price-filter'
             id='350_450-price-filter'
           />
-          <p className='font-bold'>350-450</p>
+          <label htmlFor='350_450-price-filter' className='350-450 font-bold'>
+            350-450
+          </label>
         </div>
         <div className='flex gap-2'>
           <input
@@ -86,7 +102,9 @@ const Filter = () => {
             name='price-filter'
             id='450_1000-price-filter'
           />
-          <p className='font-bold'>{`>500`}</p>
+          <label htmlFor='450_1000-price-filter' className='500-1000 font-bold'>
+            500-1000
+          </label>
         </div>
       </div>
 
@@ -102,7 +120,12 @@ const Filter = () => {
                 name='polo-type-filter'
                 id={`${item}-type-filter`}
               />
-              <p className='font-bold capitalize'>{item}</p>
+              <label
+                htmlFor={`${item}-color-filter`}
+                className={`font-bold capitalize ${item}`}
+              >
+                {item}
+              </label>
             </div>
           )
         })}

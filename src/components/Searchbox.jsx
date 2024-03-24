@@ -34,11 +34,11 @@ const Searchbox = () => {
         ref={searchRef}
         type='text'
         placeholder='Search for products'
-        className='bg-gray-300 p-3 rounded-l-lg outline-none search-button-container'
+        className='bg-gray-300 p-3 rounded-l-lg outline-none'
       />
       <button
         onClick={handleSearch}
-        className='bg-black text-white p-3 rounded-r-lg'
+        className='bg-black text-white p-3 rounded-r-lg search-button-container'
       >
         Search
       </button>
