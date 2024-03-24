@@ -1,6 +1,7 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { addItemToCart } from "../utils/slices/cartSlice"
+import toast from "react-hot-toast"
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch()
@@ -10,9 +11,10 @@ const ProductCard = ({ product }) => {
 
   const handleAddToCart = () => {
     if (productCount >= product.quantity) {
-      alert("Product not in stock")
+      toast.error("Product went out of stock!")
     } else {
       dispatch(addItemToCart(product))
+      toast.success("Product successfully added to cart!")
     }
   }
 

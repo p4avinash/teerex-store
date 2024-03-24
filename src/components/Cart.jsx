@@ -6,6 +6,7 @@ import {
   removeSingleItemFromCart,
 } from "../utils/slices/cartSlice"
 import { CgMathMinus, CgMathPlus } from "react-icons/cg"
+import toast from "react-hot-toast"
 
 const Cart = () => {
   const dispatch = useDispatch()
@@ -19,23 +20,27 @@ const Cart = () => {
 
   const handleRemoveItem = (product) => {
     dispatch(removeItemFromCart(product[0].name))
+    toast.success("Successfully removed item from cart!")
   }
 
   const handleUpdateItem = (product, type) => {
     console.log("update cart item", product, type)
     if (type === "increment") {
       if (cartItems[product.name]?.length >= product.quantity) {
-        alert("Product not in stock")
+        toast.error("Product went out of stock!")
       } else {
         dispatch(addItemToCart(product))
+        toast.success("Cart Updated")
       }
     }
 
     if (type === "decrement") {
       if (cartItems[product.name]?.length === 1) {
         dispatch(removeItemFromCart(product.name))
+        toast.success("Successfully removed item from cart!")
       } else {
         dispatch(removeSingleItemFromCart(product))
+        toast.success("Cart Updated")
       }
     }
   }
@@ -72,7 +77,7 @@ const Cart = () => {
                     </p>
                   </div>
                 </div>
-                <div className='absolute right-28 sm:right-80 flex gap-3'>
+                <div className='absolute right-28 sm:right-[40%] flex gap-3'>
                   <button
                     onClick={() => handleUpdateItem(product[0], "decrement")}
                     className='text-white px-3  flex justify-center items-center rounded-lg bg-cyan-700'
