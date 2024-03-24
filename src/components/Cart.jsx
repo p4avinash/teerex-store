@@ -64,7 +64,7 @@ const Cart = () => {
             return (
               <div
                 key={product[0].id}
-                className='flex items-center justify-between border p-2 shadow-xl rounded-lg'
+                className='flex items-center justify-between border p-2 gap-2 shadow-xl rounded-lg'
               >
                 <div className='flex items-center'>
                   <img
@@ -79,7 +79,7 @@ const Cart = () => {
                     </p>
                   </div>
                 </div>
-                <div className='absolute right-28 sm:right-[40%] flex gap-3'>
+                <div className='flex gap-3'>
                   <button
                     onClick={() => handleUpdateItem(product[0], "decrement")}
                     className='text-white px-3  flex justify-center items-center rounded-lg bg-cyan-700'
